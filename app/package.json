@@ -1,0 +1,71 @@
+{
+  "name": "index",(mainのファイル名)
+  "version": "1.0.0",(バージョン)
+  "description": "This is sample code",(モジュールの説明)
+  "main": "dist/index.js",(mainファイル)
+  "directories": {(ディレクトリ構成)
+    "src": "src",
+    "dist": "dist",
+    "param": "param",
+    "test": "test"
+  },
+  "scripts": {(スクリプトの設定)
+    "start": "npm run build && npm run watch", (ビルドして実行)
+    "build": "npm install && npm run build-ts && npm run tslint",(ビルド)
+    "serve": "nodemon dist/src/index.js",(サービスとして実行)
+    "watch": "npm install concurrently && concurrently -k -p \"[{name}]\" -n \"Typescript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve\"",(ビルドしつつウォッチ)
+    "test": "npm run build && jest --forceExit --detectOpenHandles",(テストコード実行)
+    "test-ci": "jest --coverage --forceExit --runInBand",(テストコード実行し、コードカバレッジを表示)
+    "build-ts": "tsc",(Typescriptのビルド)
+    "watch-ts": "tsc -w",(Typescriptのウォッチ)
+    "tslint": "tslint -c tslint.json -p tsconfig.json"(ts-lintを実行)
+  },
+  "author": "EmptySet",(作成者)
+  "license": "MIT",(ライセンス)
+  "devDependencies": {(依存モジュール、バージョン。npm install -Dでインストールされる)
+    "@babel/core": "*",
+    "@babel/preset-env": "*",
+    "@babel/preset-react": "*",
+    "@babel/preset-typescript": "*",
+    "@types/jest": "*",
+    "@types/uuid": "^7.0.2",
+    "async-mutex": "^0.1.4",
+    "babel-jest": "*",
+    "jest": "^25.2.6",
+    "log4js": "^6.1.2",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0",
+    "ts-jest": "^25.3.0",
+    "tslint": "6.1.0",
+    "typescript": "3.8.3"
+  },
+  "dependencies": {(依存モジュール、バージョン。npm installでインストールされる)
+    "@types/express": "^4.17.4",
+    "@types/jest": "^25.1.5",
+    "@types/node": "^13.9.5",
+    "@types/socket.io": "^2.1.4",
+    "@types/socket.io-client": "^1.4.32",
+    "express": "^4.17.1",
+    "jest-cli": "^25.2.6",
+    "log4js": "6.1.2",
+    "tsc": "^1.20150623.0",
+    "uuid": "^7.0.2"
+  },
+  "jest": {(jest(テストツール)の設定)
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "testMatch": [
+      "**/test/**/*.test.ts"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.json"
+      }
+    }
+  }
+}

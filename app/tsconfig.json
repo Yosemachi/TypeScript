@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",(モジュールコードのバージョン)
+        "target": "es2017",(ECMAScriptのバージョン)
+        "noImplicitAny": true,(Any型を許容しない)
+        "moduleResolution": "node",(構造の単位)
+        "sourceMap": true,(tsファイルとjsファイル間のマップファイルを作成)
+        "outDir": "./dist",(ビルド後のファイルの格納先)
+        "baseUrl": ".",(ソースファイルのベースのパス)
+        "rootDir":"./src",(ルートディレクトリ)
+        "paths": {(パスの定義)
+            "*": [
+                "node_modules/*",
+                "src/*",
+                "test/*"
+            ]
+        }
+    },
+    "include": [(includeするファイル)
+        "src/**/*"
+    ]
+}
